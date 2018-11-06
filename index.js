@@ -77,11 +77,11 @@ app.post("/api/user/log_in", function(req, res) {
     const hash = SHA256(password + salt).toString(encBase64);
     if (hash === userFound.hash) {
       res.json({
-        _id: "5a833c6be635aeb3fc249e04",
-        token: "u6C1HwUH45qQvT5e",
+        _id: userFound._id,
+        token: userFound.token,
         account: {
-          username: "Farid",
-          biography: "CTO @ Le Reacteur"
+          username: userFound.account.username,
+          biography: userFound.account.biography
         }
       });
     } else {
